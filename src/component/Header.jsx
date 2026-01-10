@@ -1,85 +1,124 @@
-import React from "react";
+import React, { useState, useRef, use, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MdClose, MdMenu } from "react-icons/md";
+import MenuToggle from "./MenuToggle";
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsOpen(false);
     }
   };
+  const menuItems = [
+    ["Home", "home"],
+    ["Skills", "skills"],
+    ["Projects", "projects"],
+    ["Timeline", "myjourney"],
+    ["Contact", "contact"],
+  ];
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full max-w-7xl px-4 md:px-10 py-3 transition-colors duration-300 bg-white/50 backdrop-blur-md rounded-b-xl border-b border-white/20">
-      <div className="flex items-center justify-between whitespace-nowrap">
+    <header
+      ref={menuRef}
+      className="sticky top-0 z-50 w-full max-w-7xl mx-auto
+      px-4 md:px-10 py-3 relative
+      bg-white/50 backdrop-blur-md rounded-b-xl border-b border-white/20"
+    >
+      <div className="flex items-center justify-between">
+        {/* Logo */}
         <div className="flex items-center gap-4 text-text-light">
           <div className="size-6 text-primary">
-            <svg
-              fill="none"
-              viewBox="0 0 48 48"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg fill="none" viewBox="0 0 48 48">
               <path
-                clipRule="evenodd"
                 d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
                 fill="currentColor"
-                fillRule="evenodd"
-              ></path>
+              />
             </svg>
           </div>
-          <h2 className="text-text-light text-lg font-bold leading-tight tracking-[-0.015em]">
-            Suprabhat
-          </h2>
+          <h2 className="text-lg font-bold tracking-tight">Suprabhat</h2>
         </div>
-        <div className="hidden md:flex flex-1 justify-end gap-8">
-          <div className="flex items-center gap-9">
-            <a
-              onClick={() => scrollToSection("home")}
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
-              data-cursor-text="Home"
-              data-cursor-stick
-            >
-              Home
-            </a>
-            <a
-              onClick={() => scrollToSection("skills")}
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
-              data-cursor-text="Skills"
-              data-cursor-stick
-            >
-              Skills
-            </a>
-            <a
-              onClick={() => scrollToSection("projects")}
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
-              data-cursor-text="Projects"
-              data-cursor-stick
-            >
-              Projects
-            </a>
-            <a
-              onClick={() => scrollToSection("myjourney")}
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
-              data-cursor-text="Timeline"
-              data-cursor-stick
-            >
-              Timeline
-            </a>
-          </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
+          <nav className="flex items-center gap-9">
+            {[
+              ["Home", "home"],
+              ["Skills", "skills"],
+              ["Projects", "projects"],
+              ["Timeline", "myjourney"],
+            ].map(([label, id]) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="text-sm font-medium text-text-light
+                  hover:text-primary transition"
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+
           <button
             onClick={() => scrollToSection("contact")}
-            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-yellow-500 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity"
-            data-cursor-text="Click"
-            data-cursor-stick
+            className="h-10 px-4 rounded-lg bg-yellow-500
+              text-white text-sm font-bold hover:opacity-90 transition"
           >
-            <span className="">Contact Me</span>
+            Contact Me
           </button>
         </div>
-        <div className="md:hidden">
-          <button className="text-text-light">
-            <span className="material-symbols-outlined text-3xl">menu</span>
-          </button>
-        </div>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          className="md:hidden text-text-light"
+        >
+          <MenuToggle isOpen={isOpen} />
+        </button>
       </div>
+
+      {/* ✅ Absolute Mobile Dropdown */}
+      {isOpen && (
+        <div
+          className="md:hidden absolute left-0 right-0 top-full
+          bg-white/95 backdrop-blur-md
+          border-t border-white/20 shadow-xl"
+        >
+          <nav className="flex flex-col p-4 gap-2">
+            {menuItems.map(([label, id]) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="text-left px-4 py-3 rounded-lg
+                  text-text-light font-medium
+                  hover:bg-yellow-100 transition"
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

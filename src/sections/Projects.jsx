@@ -7,23 +7,30 @@ const projects = [
     title: "Online Auction Platform",
     description:
       "A real-time auction system with live bidding, authentication, and winner tracking.",
-    tech: ["React", "Node.js", "PostgreSQL", "WebSocket"],
+    tech: [
+      "React",
+      "TailwindCSS",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "WebSocket",
+      "JWT",
+    ],
     github: "https://github.com/suprabhatmaiti/auction",
   },
   {
-    title: "Portfolio Website",
+    title: "Blog Admin Dashboard",
     description:
-      "A responsive personal portfolio built with React and Tailwind CSS.",
-    tech: ["React", "Tailwind", "Framer Motion"],
-    github: "https://github.com/yourusername/portfolio",
-    live: "https://your-portfolio.com",
+      "An admin panel for managing blog content with secure authentication, role-based access, and CRUD operations.",
+    tech: ["React", "TailwindCSS", "local Storage"],
+    github: "https://github.com/suprabhatmaiti/blog-admin",
   },
   {
-    title: "REST API Backend",
+    title: "Task Management Application",
     description:
-      "Secure REST API with JWT authentication and role-based access.",
-    tech: ["Node.js", "Express", "PostgreSQL"],
-    github: "https://github.com/yourusername/backend-api",
+      "A task management system for creating, tracking, and organizing tasks with user authentication and status-based workflow.",
+    tech: ["React", "Node.js", "Express", "PostgreSQL", "JWT"],
+    github: "https://github.com/suprabhatmaiti/TaskFlow",
   },
 ];
 
