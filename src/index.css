@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import url("fonts.googleapis.com");
-@import url("fonts.gstatic.com");
 @import "mouse-follower/dist/mouse-follower.min.css";
 
 :root {
