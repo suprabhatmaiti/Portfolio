@@ -27,7 +27,7 @@ export default function Hero() {
     <section
       id="home"
       data-cursor="inverse"
-      className="md:min-h-screen w-full py-30  scroll-mt-24
+      className="w-full py-30  scroll-mt-24
       bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
     >
       <div
