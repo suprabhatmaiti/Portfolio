@@ -27,12 +27,15 @@ export default function Hero() {
     <section
       id="home"
       data-cursor="inverse"
-      className="w-full py-30  scroll-mt-24
-      bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
+      className="w-full min-h-screen scroll-mt-24
+  flex items-center justify-center
+  bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
     >
       <div
-        className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row 
-        justify-between items-center gap-6 px-6 sm:px-8"
+        className="max-w-7xl mx-auto w-full
+          flex flex-col-reverse md:flex-row
+          items-center gap-10 justify-center md:justify-evenly
+          px-6 sm:px-8 "
       >
         {/* Text */}
         <motion.div
@@ -52,9 +55,10 @@ export default function Hero() {
               hidden: { opacity: 0, y: 40 },
               show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
             }}
+            className="space-y-10"
           >
             <h1 className="text-white text-3xl sm:text-5xl md:text-6xl font-black leading-tight">
-              <span className="block font-light italic text-orange-400 text-2xl md:text-4xl mb-2">
+              <span className="block font-semibold italic text-orange-600 text-2xl md:text-4xl mb-2">
                 Hi, I'm
               </span>
               <span className="text-indigo-900">Suprabhat </span>
@@ -62,8 +66,12 @@ export default function Hero() {
             </h1>
 
             <p className="mt-4 text-white text-base md:text-lg max-w-lg mx-auto md:mx-0">
-              A passionate full-stack developer dedicated to creating intuitive,
-              powerful, and seamless digital experiences.
+              I am a passionate Full-Stack Developer with a postgraduate degree
+              in Information Technology from Kalyani Government Engineering
+              College. I enjoy improving my coding skills by building
+              applications and websites using React, Node.js, and PostgreSQL,
+              and I am eager to learn new tools while growing professionally
+              through hands-on projects.
             </p>
           </motion.div>
 

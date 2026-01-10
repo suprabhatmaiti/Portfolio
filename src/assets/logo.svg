@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <defs>
+    <linearGradient id="luxuryGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="10%" style="stop-color:#a67c52;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f3e5ab;stop-opacity:1" />
+      <stop offset="90%" style="stop-color:#8c6239;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="2" dy="3" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <text x="50%" y="55%" 
+        font-family="'Didot', 'Bodoni MT', 'Times New Roman', serif" 
+        font-size="150" 
+        font-weight="bold" 
+        font-style="italic"
+        text-anchor="middle" 
+        dominant-baseline="middle"
+        fill="url(#luxuryGold)"
+        letter-spacing="-15"
+        filter="url(#softShadow)">
+    SM
+  </text>
+  
+  <path d="M 100,145 C 120,155 180,155 200,145" 
+        stroke="url(#luxuryGold)" 
+        stroke-width="3" 
+        fill="none" 
+        stroke-linecap="round"
+        opacity="0.6"/>
+</svg>
