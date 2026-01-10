@@ -1,58 +1,62 @@
 import React from "react";
 import { FaGraduationCap, FaSchool, FaUniversity } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FcDiploma2 } from "react-icons/fc";
 
 export default function MyJourney() {
   const educationTimeline = [
     {
       year: "2025",
-      institution: "Your University Name",
-      degree: "Bachelor of Technology",
-      field: "Computer Science & Engineering",
-      description: "Specialized in web development and software engineering.",
+      institution: "Kalyani Government Engineering College",
+      degree: "Master of Technology",
+      field: "Information Technology",
+      description:
+        "Advanced studies in information technology with focus on software systems, web technologies, and applied engineering concepts.",
       icon: <FaUniversity />,
     },
     {
       year: "2022",
-      institution: "Your College Name",
-      degree: "Higher Secondary",
-      field: "Science Stream",
-      description: "Focused on Mathematics, Physics, and Computer Science.",
-      icon: <FaSchool />,
+      institution: "Government College of Engineering And Leather Technology",
+      degree: "Bachelor of Technology",
+      field: "Information Technology",
+      description:
+        "Undergraduate education in information technology covering programming, databases, data structures, and core software engineering principles.",
+      icon: <FaGraduationCap />,
     },
     {
       year: "2019",
-      institution: "Your School Name",
-      degree: "Secondary School",
-      field: "General Studies",
+      institution: "South Calcutta Polytechnic",
+      degree: "Diploma",
+      field: "Computer Science and Technology",
       description:
-        "Completed with distinction and strong foundation in academics.",
+        "Diploma training focused on computer science fundamentals, programming skills, and practical technical knowledge.",
       icon: <FaGraduationCap />,
     },
     {
       year: "2017",
-      institution: "Your School Name",
-      degree: "Secondary School",
-      field: "General Studies",
+      institution: "West Bengal State Council of Technical Education",
+      degree: "Higher Secondary School",
+      field: "Vocational Studies",
       description:
-        "Completed with distinction and strong foundation in academics.",
-      icon: <FaGraduationCap />,
+        "Vocational higher secondary education emphasizing applied technical learning and foundational engineering subjects.",
+      icon: <FaSchool />,
     },
     {
       year: "2015",
-      institution: "Your School Name",
+      institution: "West Bengal Board of Secondary Education",
       degree: "Secondary School",
       field: "General Studies",
       description:
-        "Completed with distinction and strong foundation in academics.",
-      icon: <FaGraduationCap />,
+        "Secondary education providing a strong academic foundation and development of analytical and problem-solving skills.",
+      icon: <FaSchool />,
     },
   ];
 
   return (
     <motion.section
+      id="myjourney"
       data-cursor="-inverse"
-      className="w-full py-16 sm:py-20 
+      className="w-full py-16 sm:py-20 scroll-mt-24
         bg-gradient-to-b to-blue-700 via-indigo-600 from-blue-500"
     >
       <div className="max-w-6xl mx-auto px-4">

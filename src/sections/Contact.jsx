@@ -37,8 +37,9 @@ export default function Contact() {
 
   return (
     <motion.section
+      id="contact"
       data-cursor="-inverse"
-      className="w-full py-16 sm:py-20 px-4
+      className="w-full py-16 sm:py-20 px-4 scroll-mt-24
       bg-gradient-to-b to-blue-900 via-indigo-800 from-blue-700"
     >
       {/* Header */}

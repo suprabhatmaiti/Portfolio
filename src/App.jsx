@@ -7,6 +7,7 @@ import Footer from "./sections/Footer";
 import PointerFollower from "./component/PointerFollower";
 import { motion } from "framer-motion";
 import Projects from "./sections/Projects";
+import { useRef } from "react";
 
 export default function App() {
   return (

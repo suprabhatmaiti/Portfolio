@@ -1,13 +1,33 @@
 import React from "react";
 import myImage from "../assets/myimage.jpg";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaXTwitter, FaEnvelope } from "react-icons/fa6";
 
 export default function Hero() {
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      href: "https://github.com/suprabhatmaiti",
+    },
+    {
+      icon: FaLinkedin,
+      href: "https://linkedin.com/in/suprabhat-maiti",
+    },
+    // {
+    //   icon: FaXTwitter,
+    //   href: "https://twitter.com/suprabhatmaiti",
+    // },
+    {
+      icon: FaEnvelope,
+      href: "mailto:maitisuprabhat@gmail.com",
+      label: "Email",
+    },
+  ];
   return (
     <section
+      id="home"
       data-cursor="inverse"
-      className="md:min-h-screen w-full py-20
+      className="md:min-h-screen w-full py-20 scroll-mt-24
       bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
     >
       <div
@@ -71,11 +91,14 @@ export default function Hero() {
             }}
             className="flex gap-6 mt-6 md:mt-8 justify-center md:justify-start"
           >
-            {[FaGithub, FaLinkedin, FaXTwitter].map((Icon, i) => (
+            {socialLinks.map(({ icon: Icon, href }, i) => (
               <a
                 key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-slate-900 text-white text-2xl p-4 rounded-full
-                  hover:bg-blue-800 transition-all hover:shadow-2xl"
+      hover:bg-blue-800 transition-all hover:shadow-2xl"
               >
                 <Icon />
               </a>

@@ -8,10 +8,16 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <footer
       data-cursor="-inverse"
-      className="w-full bg-gray-900 text-white border-t border-white/10 bg-gradient-to-b to-black-2000 via-indigo-950 from-blue-950"
+      className=" w-full bg-gray-900 text-white border-t border-white/10 bg-gradient-to-b to-black-2000 via-indigo-950 from-blue-950"
     >
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Main Grid */}
@@ -20,16 +26,18 @@ export default function Footer() {
           <div className="text-center lg:text-left">
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "My Journey", "Skills", "Contact"].map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase().replace(" ", "")}`}
-                    className="text-white/70 hover:text-yellow-500 transition-colors"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {["Home", "Skills", "Projects", "My Journey", "Contact"].map(
+                (item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item.toLowerCase().replace(" ", "")}`}
+                      className="text-white/70 hover:text-yellow-500 transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 

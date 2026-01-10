@@ -1,6 +1,13 @@
 import React from "react";
 
 export default function Header() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full max-w-7xl px-4 md:px-10 py-3 transition-colors duration-300 bg-white/50 backdrop-blur-md rounded-b-xl border-b border-white/20">
       <div className="flex items-center justify-between whitespace-nowrap">
@@ -26,36 +33,40 @@ export default function Header() {
         <div className="hidden md:flex flex-1 justify-end gap-8">
           <div className="flex items-center gap-9">
             <a
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors"
+              onClick={() => scrollToSection("home")}
+              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
               data-cursor-text="Home"
               data-cursor-stick
             >
               Home
             </a>
             <a
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors"
-              data-cursor-text="Timeline"
-              data-cursor-stick
-            >
-              Timeline
-            </a>
-            <a
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors"
-              href=""
+              onClick={() => scrollToSection("skills")}
+              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
               data-cursor-text="Skills"
               data-cursor-stick
             >
               Skills
             </a>
             <a
-              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors"
-              data-cursor-text="Contact"
+              onClick={() => scrollToSection("projects")}
+              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
+              data-cursor-text="Projects"
               data-cursor-stick
             >
-              Contact
+              Projects
+            </a>
+            <a
+              onClick={() => scrollToSection("myjourney")}
+              className="text-text-light text-sm font-medium leading-normal hover:text-primary transition-colors cursor-pointer"
+              data-cursor-text="Timeline"
+              data-cursor-stick
+            >
+              Timeline
             </a>
           </div>
           <button
+            onClick={() => scrollToSection("contact")}
             className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-yellow-500 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity"
             data-cursor-text="Click"
             data-cursor-stick

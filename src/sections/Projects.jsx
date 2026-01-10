@@ -8,8 +8,7 @@ const projects = [
     description:
       "A real-time auction system with live bidding, authentication, and winner tracking.",
     tech: ["React", "Node.js", "PostgreSQL", "WebSocket"],
-    github: "https://github.com/yourusername/auction-platform",
-    live: "https://your-live-link.com",
+    github: "https://github.com/suprabhatmaiti/auction",
   },
   {
     title: "Portfolio Website",
@@ -47,7 +46,8 @@ const item = {
 export default function Projects() {
   return (
     <section
-      className="w-full py-16 sm:py-20 px-4
+      id="projects"
+      className="w-full py-16 sm:py-20 px-4 scroll-mt-24
       bg-gradient-to-b from-blue-400 via-indigo-500 to-blue-500"
     >
       {/* Header */}
