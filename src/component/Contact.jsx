@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <section
+      data-cursor="-inverse"
+      className="w-full py-16 sm:py-20 px-4
+      bg-gradient-to-b to-blue-900 via-indigo-800 from-blue-700"
+    >
+      {/* Header */}
+      <div className="text-center mb-10 max-w-3xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 text-white">
+          Get In Touch
+        </h2>
+        <p className="text-white/70 text-base sm:text-lg">
+          Have a project in mind or just want to say hello? I'd love to hear
+          from you!
+        </p>
+      </div>
+
+      {/* Form */}
+      <form
+        data-cursor="inverse"
+        onSubmit={handleSubmit}
+        className="max-w-2xl mx-auto bg-white/95 backdrop-blur
+          rounded-2xl p-6 sm:p-8 border border-white/10 shadow-xl"
+      >
+        {/* Name */}
+        <div className="mb-5">
+          <label className="block text-sm font-semibold mb-2 text-gray-800">
+            Your Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="John Doe"
+            className="w-full px-4 py-3 rounded-lg border border-slate-300
+              focus:ring-2 focus:ring-yellow-500/30 focus:border-yellow-500
+              outline-none transition"
+          />
+        </div>
+
+        {/* Email */}
+        <div className="mb-5">
+          <label className="block text-sm font-semibold mb-2 text-gray-800">
+            Your Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="john@example.com"
+            className="w-full px-4 py-3 rounded-lg border border-slate-300
+              focus:ring-2 focus:ring-yellow-500/30 focus:border-yellow-500
+              outline-none transition"
+          />
+        </div>
+
+        {/* Message */}
+        <div className="mb-6">
+          <label className="block text-sm font-semibold mb-2 text-gray-800">
+            Your Message
+          </label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows="5"
+            required
+            placeholder="Tell me about your project..."
+            className="w-full px-4 py-3 rounded-lg border border-slate-300 resize-none
+              focus:ring-2 focus:ring-yellow-500/30 focus:border-yellow-500
+              outline-none transition"
+          />
+        </div>
+
+        {/* Button */}
+        <button
+          type="submit"
+          className="w-full bg-yellow-500 hover:bg-yellow-600
+            text-white font-bold py-3 sm:py-4 rounded-lg
+            transition-transform active:scale-95"
+        >
+          Send Message
+        </button>
+      </form>
+
+      {/* Direct Email */}
+      <div className="mt-6 text-center">
+        <p className="text-white/60 mb-2 text-sm sm:text-base">
+          Or reach out directly at:
+        </p>
+        <a
+          href="mailto:maitisuprabhat@gmail.com"
+          className="text-yellow-400 hover:text-yellow-300 font-semibold text-base sm:text-lg"
+        >
+          maitisuprabhat@gmail.com
+        </a>
+      </div>
+    </section>
+  );
+}
