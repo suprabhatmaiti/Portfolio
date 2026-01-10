@@ -119,7 +119,7 @@ export default function Skills() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ amount: 0.3 }}
         className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6"
       >
         {skills.map((skill, index) => (
@@ -162,7 +162,7 @@ export default function Skills() {
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        viewport={{ amount: 0.3 }}
         transition={{ delay: 0.2 }}
         className="mt-12 sm:mt-16 text-center text-white/60 text-sm"
       >

@@ -45,15 +45,15 @@ export default function Contact() {
 
   return (
     <motion.section
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
       data-cursor="-inverse"
       className="w-full py-16 sm:py-20 px-4
       bg-gradient-to-b to-blue-900 via-indigo-800 from-blue-700"
     >
       {/* Header */}
       <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ amount: 0.3 }}
         variants={fadeLeft}
         className="text-center mb-10 max-w-3xl mx-auto"
       >
@@ -68,6 +68,9 @@ export default function Contact() {
 
       {/* Form */}
       <motion.form
+        initial="hidden"
+        whileInView="show"
+        viewport={{ amount: 0.3 }}
         variants={fadeRight}
         data-cursor="inverse"
         onSubmit={handleSubmit}
@@ -140,7 +143,13 @@ export default function Contact() {
       </motion.form>
 
       {/* Direct Email */}
-      <motion.div variants={fadeLeft} className="mt-6 text-center">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ amount: 0.3 }}
+        variants={fadeLeft}
+        className="mt-6 text-center"
+      >
         <p className="text-white/60 mb-2 text-sm sm:text-base">
           Or reach out directly at:
         </p>

@@ -54,10 +54,6 @@ export default function MyJourney() {
       data-cursor="-inverse"
       className="w-full py-16 sm:py-20 
         bg-gradient-to-b to-blue-700 via-indigo-400 from-blue-500"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
@@ -65,7 +61,7 @@ export default function MyJourney() {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-black mb-4">
@@ -92,18 +88,18 @@ export default function MyJourney() {
           <div className="space-y-12">
             {educationTimeline.map((item, index) => (
               <React.Fragment key={index}>
-                <motion.div
-                  className="relative flex items-start"
-                  initial={{
-                    opacity: 0,
-                    x: index % 2 === 0 ? 60 : -60,
-                  }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
+                <motion.div className="relative flex items-start">
                   {/* Mobile year */}
-                  <div className="md:hidden absolute left-0 z-10">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: -60,
+                    }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="md:hidden absolute left-0 z-10"
+                  >
                     <div
                       className="w-20 h-20 rounded-full 
                       bg-gradient-to-br from-yellow-400 to-rose-500
@@ -113,10 +109,17 @@ export default function MyJourney() {
                         {item.year}
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Card */}
-                  <div
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      x: index % 2 === 0 ? 60 : -60,
+                    }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     className={`w-full pl-24 md:pl-0 md:w-5/12 ${
                       index % 2 === 0
                         ? "md:pr-12 md:ml-auto"
@@ -147,10 +150,19 @@ export default function MyJourney() {
                         {item.description}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Desktop year */}
-                  <div className="absolute left-1/2 -translate-x-1/2 z-10 hidden md:flex">
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: -60,
+                    }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="absolute left-1/2 -translate-x-1/2 z-10 hidden md:flex"
+                  >
                     <div
                       className="w-20 h-20 rounded-full 
                       bg-gradient-to-br from-yellow-300 to-rose-500
@@ -160,18 +172,13 @@ export default function MyJourney() {
                         {item.year}
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
 
                 {/* Intermediate years */}
                 {index < educationTimeline.length - 1 && (
-                  <motion.div
-                    className="relative h-24 flex items-center justify-center"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  >
+                  <motion.div className="relative h-24 flex items-center justify-center">
+                    {/* Desktop intermediate years */}
                     <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 flex-col gap-4">
                       {Array.from({
                         length:
@@ -182,16 +189,49 @@ export default function MyJourney() {
                         const year =
                           parseInt(educationTimeline[index].year) - i - 1;
                         return (
-                          <div
+                          <motion.div
+                            initial={{ opacity: 0, y: -30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
                             key={year}
                             className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-white/20"
                           >
                             <span className="text-black/40 font-semibold text-xs">
                               {year}
                             </span>
-                          </div>
+                          </motion.div>
                         );
                       })}
+                    </div>
+                    {/* Mobile intermediate years */}{" "}
+                    <div className="md:hidden absolute left-0 top-0 flex flex-col gap-4">
+                      {" "}
+                      {Array.from({
+                        length:
+                          parseInt(educationTimeline[index].year) -
+                          parseInt(educationTimeline[index + 1].year) -
+                          1,
+                      }).map((_, i) => {
+                        const year =
+                          parseInt(educationTimeline[index].year) - i - 1;
+                        return (
+                          <motion.div
+                            initial={{ opacity: 0, y: -30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.3 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            key={year}
+                            className="w-12 h-12 rounded-full bg-white flex items-center justify-center border-2 border-white/10 ml-4 shadow-lg"
+                          >
+                            {" "}
+                            <span className="text-black/50 font-semibold text-xs">
+                              {" "}
+                              {year}{" "}
+                            </span>{" "}
+                          </motion.div>
+                        );
+                      })}{" "}
                     </div>
                   </motion.div>
                 )}
@@ -205,7 +245,7 @@ export default function MyJourney() {
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
           <p className="text-white/60 text-sm">
