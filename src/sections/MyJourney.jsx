@@ -53,7 +53,7 @@ export default function MyJourney() {
     <motion.section
       data-cursor="-inverse"
       className="w-full py-16 sm:py-20 
-        bg-gradient-to-b to-blue-700 via-indigo-400 from-blue-500"
+        bg-gradient-to-b to-blue-700 via-indigo-600 from-blue-500"
     >
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}

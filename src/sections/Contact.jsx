@@ -17,14 +17,6 @@ export default function Contact() {
     console.log("Form submitted:", formData);
     setFormData({ name: "", email: "", message: "" });
   };
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.12,
-      },
-    },
-  };
 
   const fadeRight = {
     hidden: { opacity: 0, x: -30 },

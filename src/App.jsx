@@ -6,6 +6,7 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import PointerFollower from "./component/PointerFollower";
 import { motion } from "framer-motion";
+import Projects from "./sections/Projects";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
 
       <Hero />
       <Skills />
+      <Projects />
       <MyJourney />
       <Contact />
       <Footer />
