@@ -1,4 +1,3 @@
-import Header from "./component/header";
 import Hero from "./sections/Hero";
 import MyJourney from "./sections/MyJourney";
 import Skills from "./sections/Skills";
@@ -8,6 +7,7 @@ import PointerFollower from "./component/PointerFollower";
 import { motion } from "framer-motion";
 import Projects from "./sections/Projects";
 import { useRef } from "react";
+import Header from "./component/Header";
 
 export default function App() {
   return (
