@@ -60,7 +60,7 @@ export default function Contact() {
     <motion.section
       id="contact"
       data-cursor="-inverse"
-      className="w-full py-16 sm:py-20 px-4 scroll-mt-24
+      className="w-full py-16 sm:py-20 px-4 scroll-mt-24 overflow-x-hidden
       bg-gradient-to-b to-blue-900 via-indigo-800 from-blue-700"
     >
       {/* Header */}

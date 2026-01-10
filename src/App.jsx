@@ -6,15 +6,13 @@ import Footer from "./sections/Footer";
 import PointerFollower from "./component/PointerFollower";
 import { motion } from "framer-motion";
 import Projects from "./sections/Projects";
-import { useRef } from "react";
 import Header from "./component/Header";
 
 export default function App() {
   return (
-    <div className="flex flex-col justify-center items-center bg-slate-200 bg-linear-to-b from-blue-200 to-blue-200">
+    <div className=" bg-slate-200 bg-linear-to-b from-blue-200 to-blue-200">
       <PointerFollower />
       <Header />
-
       <Hero />
       <Skills />
       <Projects />

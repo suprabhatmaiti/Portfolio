@@ -21,7 +21,7 @@ export default function Header() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
       setIsOpen(false);
-      setActiveSection(sectionId);
+      // setActiveSection(sectionId);
     }
   };
 
@@ -36,15 +36,22 @@ export default function Header() {
 
     // Scroll spy logic
     const handleScroll = () => {
-      const offsets = menuItems.map(([_, id]) => {
-        const el = document.getElementById(id);
-        if (!el) return { id, top: Infinity };
-        const rect = el.getBoundingClientRect();
-        return { id, top: Math.abs(rect.top - 80) }; // 80px offset for sticky header
-      });
-      const closest = offsets.reduce((a, b) => (a.top < b.top ? a : b));
-      setActiveSection(closest.id);
+      const scrollPosition = window.scrollY + 100; // header offset
+
+      let current = "home";
+
+      for (const [, id] of menuItems) {
+        const section = document.getElementById(id);
+        if (!section) continue;
+
+        if (section.offsetTop <= scrollPosition) {
+          current = id;
+        }
+      }
+
+      setActiveSection(current);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -82,7 +89,7 @@ export default function Header() {
                 key={id}
                 onClick={() => scrollToSection(id)}
                 className={`text-sm font-medium px-3 py-2 rounded-md transition cursor-pointer
-                  hover:text-primary hover:bg-yellow-100 focus:bg-yellow-200 focus:text-primary
+                  hover:text-primary hover:bg-yellow-100
                   ${
                     activeSection === id
                       ? "bg-yellow-200 text-primary font-bold"
@@ -129,7 +136,7 @@ export default function Header() {
                 key={id}
                 onClick={() => scrollToSection(id)}
                 className={`text-left px-4 py-3 rounded-lg font-medium transition cursor-pointer
-                  hover:bg-yellow-100 hover:text-primary focus:bg-yellow-200 focus:text-primary
+                  hover:bg-yellow-100 hover:text-primary
                   ${
                     activeSection === id
                       ? "bg-yellow-200 text-primary font-bold"

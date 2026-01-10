@@ -133,7 +133,7 @@ export default function MyJourney() {
                     <div
                       className="bg-white/10 backdrop-blur-md border border-white/10
                       rounded-2xl p-6 hover:border-yellow-400
-                      transition-all hover:scale-105 hover:shadow-xl hover:shadow-black/30"
+                      transition-all hover:shadow-xl hover:shadow-black/30"
                     >
                       <div className="flex items-center gap-3 mb-4">
                         <div className="text-3xl text-yellow-400">
