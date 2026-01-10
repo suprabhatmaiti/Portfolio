@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,8 +15,28 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", message: "" });
+    emailjs
+      .send(
+        "service_jukt34x",
+        "template_hiw9fcq",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        "T2tSYmJyHAMKSShx2"
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error(error);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   const fadeRight = {

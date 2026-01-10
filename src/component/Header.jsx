@@ -1,18 +1,12 @@
-import React, { useState, useRef, use, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdClose, MdMenu } from "react-icons/md";
 import MenuToggle from "./MenuToggle";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsOpen(false);
-    }
-  };
   const menuItems = [
     ["Home", "home"],
     ["Skills", "skills"],
@@ -21,6 +15,15 @@ export default function Header() {
     ["Contact", "contact"],
   ];
   const menuRef = useRef(null);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsOpen(false);
+      setActiveSection(sectionId);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,8 +34,22 @@ export default function Header() {
 
     document.addEventListener("mousedown", handleClickOutside);
 
+    // Scroll spy logic
+    const handleScroll = () => {
+      const offsets = menuItems.map(([_, id]) => {
+        const el = document.getElementById(id);
+        if (!el) return { id, top: Infinity };
+        const rect = el.getBoundingClientRect();
+        return { id, top: Math.abs(rect.top - 80) }; // 80px offset for sticky header
+      });
+      const closest = offsets.reduce((a, b) => (a.top < b.top ? a : b));
+      setActiveSection(closest.id);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -60,17 +77,17 @@ export default function Header() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex items-center gap-9">
-            {[
-              ["Home", "home"],
-              ["Skills", "skills"],
-              ["Projects", "projects"],
-              ["Timeline", "myjourney"],
-            ].map(([label, id]) => (
+            {menuItems.slice(0, 4).map(([label, id]) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="text-sm font-medium text-text-light
-                  hover:text-primary transition"
+                className={`text-sm font-medium px-3 py-2 rounded-md transition cursor-pointer
+                  hover:text-primary hover:bg-yellow-100 focus:bg-yellow-200 focus:text-primary
+                  ${
+                    activeSection === id
+                      ? "bg-yellow-200 text-primary font-bold"
+                      : "text-text-light"
+                  }`}
               >
                 {label}
               </button>
@@ -79,8 +96,10 @@ export default function Header() {
 
           <button
             onClick={() => scrollToSection("contact")}
-            className="h-10 px-4 rounded-lg bg-yellow-500
-              text-white text-sm font-bold hover:opacity-90 transition"
+            className={`h-10 px-4 rounded-lg bg-yellow-500 cursor-pointer
+              text-white text-sm font-bold hover:opacity-90 transition ${
+                activeSection === "contact" ? "ring-2 ring-yellow-400" : ""
+              }`}
           >
             Contact Me
           </button>
@@ -109,9 +128,13 @@ export default function Header() {
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className="text-left px-4 py-3 rounded-lg
-                  text-text-light font-medium
-                  hover:bg-yellow-100 transition"
+                className={`text-left px-4 py-3 rounded-lg font-medium transition cursor-pointer
+                  hover:bg-yellow-100 hover:text-primary focus:bg-yellow-200 focus:text-primary
+                  ${
+                    activeSection === id
+                      ? "bg-yellow-200 text-primary font-bold"
+                      : "text-text-light"
+                  }`}
               >
                 {label}
               </button>

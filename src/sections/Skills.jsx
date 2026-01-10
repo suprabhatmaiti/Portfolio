@@ -34,19 +34,19 @@ export default function Skills() {
       name: "React JS",
       icon: <FaReact />,
       color: "from-cyan-400 to-blue-500",
-      level: "Advanced",
+      level: "Intermediate",
     },
     {
       name: "Node JS",
       icon: <FaNodeJs />,
       color: "from-green-400 to-green-600",
-      level: "Advanced",
+      level: "Intermediate",
     },
     {
       name: "JavaScript",
       icon: <FaJs />,
       color: "from-yellow-300 to-yellow-500",
-      level: "Advanced",
+      level: "Intermediate",
     },
     {
       name: "Express JS",
@@ -82,7 +82,7 @@ export default function Skills() {
       name: "Python",
       icon: <FaPython />,
       color: "from-blue-500 to-yellow-400",
-      level: "Intermediate",
+      level: "Beginner",
     },
     {
       name: "C++",
