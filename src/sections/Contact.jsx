@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,15 +17,46 @@ export default function Contact() {
     console.log("Form submitted:", formData);
     setFormData({ name: "", email: "", message: "" });
   };
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
+  const fadeRight = {
+    hidden: { opacity: 0, x: -30 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+  const fadeLeft = {
+    hidden: { opacity: 0, x: 30 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-    <section
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
       data-cursor="-inverse"
       className="w-full py-16 sm:py-20 px-4
       bg-gradient-to-b to-blue-900 via-indigo-800 from-blue-700"
     >
       {/* Header */}
-      <div className="text-center mb-10 max-w-3xl mx-auto">
+      <motion.div
+        variants={fadeLeft}
+        className="text-center mb-10 max-w-3xl mx-auto"
+      >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 text-white">
           Get In Touch
         </h2>
@@ -32,10 +64,11 @@ export default function Contact() {
           Have a project in mind or just want to say hello? I'd love to hear
           from you!
         </p>
-      </div>
+      </motion.div>
 
       {/* Form */}
-      <form
+      <motion.form
+        variants={fadeRight}
         data-cursor="inverse"
         onSubmit={handleSubmit}
         className="max-w-2xl mx-auto bg-white/95 backdrop-blur
@@ -104,10 +137,10 @@ export default function Contact() {
         >
           Send Message
         </button>
-      </form>
+      </motion.form>
 
       {/* Direct Email */}
-      <div className="mt-6 text-center">
+      <motion.div variants={fadeLeft} className="mt-6 text-center">
         <p className="text-white/60 mb-2 text-sm sm:text-base">
           Or reach out directly at:
         </p>
@@ -117,7 +150,7 @@ export default function Contact() {
         >
           maitisuprabhat@gmail.com
         </a>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

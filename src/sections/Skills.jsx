@@ -8,8 +8,27 @@ import {
   FaPython,
 } from "react-icons/fa";
 import { SiPostgresql, SiMysql, SiExpress, SiCplusplus } from "react-icons/si";
+import { motion } from "framer-motion";
 
 export default function Skills() {
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
   const skills = [
     {
       name: "React JS",
@@ -74,9 +93,18 @@ export default function Skills() {
   ];
 
   return (
-    <section className="w-full py-16 sm:py-20 px-4 bg-gradient-to-b to-blue-500 via-indigo-200 from-blue-300">
+    <motion.section
+      data-cursor="inverse"
+      className="w-full py-16 sm:py-20 px-4 
+        bg-gradient-to-b from-blue-300 via-indigo-200 to-blue-500"
+    >
       {/* Header */}
-      <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto"
+      >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
           Skills & Technologies
         </h2>
@@ -84,28 +112,33 @@ export default function Skills() {
           A collection of technologies I work with to build scalable, modern
           applications
         </p>
-      </div>
+      </motion.div>
 
       {/* Skills Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6"
+      >
         {skills.map((skill, index) => (
-          <div
+          <motion.div
             key={index}
-            className="group relative bg-white/95 backdrop-blur rounded-2xl p-5 sm:p-6 border border-white/10
-                       hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-black/30"
+            variants={item}
+            className="group relative bg-white/95 backdrop-blur rounded-2xl p-5 sm:p-6
+              hover:scale-105 transition-all duration-300 hover:shadow-xl"
           >
-            {/* Hover Gradient Overlay */}
+            {/* Hover Gradient */}
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 
-                          group-hover:opacity-10 rounded-2xl transition-opacity`}
+              className={`absolute inset-0 bg-gradient-to-br ${skill.color}
+                opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity`}
             />
 
-            {/* Content */}
             <div className="relative flex flex-col items-center gap-3 sm:gap-4">
               <div className="text-4xl sm:text-5xl text-gray-700 group-hover:scale-110 transition-transform">
                 {skill.icon}
               </div>
-
               <div className="text-center">
                 <h3 className="text-gray-900 font-semibold text-sm sm:text-base">
                   {skill.name}
@@ -119,19 +152,23 @@ export default function Skills() {
             {/* Corner Accent */}
             <div
               className={`absolute top-0 right-0 w-14 h-14 bg-gradient-to-br ${skill.color}
-                          opacity-0 group-hover:opacity-20 rounded-bl-full rounded-tr-2xl`}
+                opacity-0 group-hover:opacity-20 rounded-bl-full rounded-tr-2xl`}
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Footer Text */}
-      <div className="mt-12 sm:mt-16 text-center">
-        <p className="text-white/60 text-sm">
-          Continuously learning and adapting to stay ahead in an ever-evolving
-          tech landscape
-        </p>
-      </div>
-    </section>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="mt-12 sm:mt-16 text-center text-white/60 text-sm"
+      >
+        Continuously learning and adapting to stay ahead in an ever-evolving
+        tech landscape
+      </motion.p>
+    </motion.section>
   );
 }
