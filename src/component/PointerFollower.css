@@ -1,0 +1,22 @@
+/* Cuberto Mouse Follower Custom Styles */
+.mf-cursor {
+  --cursor-size: 40px;
+  --cursor-border: 1px;
+  --cursor-bg: rgba(0, 123, 255, 0.2);
+  --cursor-border-color: rgba(0, 123, 255, 0.8);
+  --cursor-text-color: #fff;
+}
+
+.mf-cursor-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Custom states for different elements */
+[data-cursor-text] {
+  cursor: pointer;
+}
+
+[data-cursor-stick] {
+  cursor: pointer;
+}
