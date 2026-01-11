@@ -8,12 +8,22 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      href: "https://github.com/suprabhatmaiti",
+    },
+    {
+      icon: FaLinkedin,
+      href: "https://linkedin.com/in/suprabhat-maiti",
+    },
+    {
+      icon: FaEnvelope,
+      href: "mailto:maitisuprabhat@gmail.com",
+      label: "Email",
+    },
+  ];
+
   return (
     <footer
       data-cursor="-inverse"
@@ -56,30 +66,17 @@ export default function Footer() {
             </div>
 
             <div className="flex justify-center lg:justify-start gap-5">
-              <a
-                href="https://github.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-yellow-500 transition-colors"
-              >
-                <FaGithub size={22} />
-              </a>
-              <a
-                href="https://linkedin.com/in/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-yellow-500 transition-colors"
-              >
-                <FaLinkedin size={22} />
-              </a>
-              <a
-                href="https://twitter.com/yourusername"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-yellow-500 transition-colors"
-              >
-                <FaTwitter size={22} />
-              </a>
+              {socialLinks.map(({ icon: Icon, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 text-xl md:text-2xl hover:text-yellow-500 transition-colors"
+                >
+                  <Icon />
+                </a>
+              ))}
             </div>
           </div>
 
