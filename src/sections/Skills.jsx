@@ -96,7 +96,7 @@ export default function Skills() {
     <motion.section
       id="skills"
       data-cursor="inverse"
-      className="w-full py-16 sm:py-20 px-4 scroll-mt-24
+      className="w-full py-16 sm:py-20 px-4 md:scroll-mt-24
         bg-gradient-to-b from-blue-300 via-indigo-400 to-blue-400"
     >
       {/* Header */}

@@ -54,7 +54,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full py-16 sm:py-20 px-4 scroll-mt-24
+      className="w-full py-16 sm:py-20 px-4 md:scroll-mt-24
       bg-gradient-to-b from-blue-400 via-indigo-500 to-blue-500"
     >
       {/* Header */}

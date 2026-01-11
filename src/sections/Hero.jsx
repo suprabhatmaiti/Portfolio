@@ -27,7 +27,7 @@ export default function Hero() {
     <section
       id="home"
       data-cursor="inverse"
-      className="w-full min-h-screen scroll-mt-24
+      className="w-full min-h-screen md:scroll-mt-24
       flex items-center justify-center
       bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
     >
