@@ -10,7 +10,7 @@ import Header from "./component/Header";
 
 export default function App() {
   return (
-    <div className=" bg-slate-200 bg-linear-to-b from-blue-200 to-blue-200">
+    <div className="relative">
       <PointerFollower />
       <Header />
       <Hero />

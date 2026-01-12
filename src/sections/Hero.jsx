@@ -27,7 +27,7 @@ export default function Hero() {
     <section
       id="home"
       data-cursor="inverse"
-      className="w-full min-h-screen md:scroll-mt-24
+      className="w-full min-h-screen 
       flex items-center justify-center
       bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
     >
@@ -35,7 +35,7 @@ export default function Hero() {
         className="max-w-7xl mx-auto w-full
           flex flex-col-reverse md:flex-row
           items-center gap-10 justify-center md:justify-between
-          px-6 sm:px-8 "
+          px-6"
       >
         {/* Text */}
         <motion.div
@@ -65,7 +65,7 @@ export default function Hero() {
               <span className="text-slate-900">Maiti</span>
             </h1>
 
-            <p className="mt-4 text-white text-base md:text-lg max-w-lg mx-auto md:mx-0">
+            <p className="pt-4 text-white text-base md:text-lg max-w-lg mx-auto md:mx-0">
               I am a passionate Full-Stack Developer with a postgraduate degree
               in Information Technology from Kalyani Government Engineering
               College. I enjoy improving my coding skills by building

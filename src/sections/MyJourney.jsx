@@ -56,7 +56,7 @@ export default function MyJourney() {
     <motion.section
       id="myjourney"
       data-cursor="-inverse"
-      className="w-full py-16 sm:py-20 md:scroll-mt-24 overflow-x-hidden
+      className="w-full py-16 sm:py-20 md:scroll-mt-16 overflow-x-hidden
         bg-gradient-to-b to-blue-700 via-indigo-600 from-blue-500"
     >
       <div className="max-w-6xl mx-auto px-4">
