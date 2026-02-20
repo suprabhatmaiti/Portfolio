@@ -31,6 +31,7 @@ const projects = [
       "A task management system for creating, tracking, and organizing tasks with user authentication and status-based workflow.",
     tech: ["React", "Node.js", "Express", "PostgreSQL", "JWT"],
     github: "https://github.com/suprabhatmaiti/TaskFlow",
+    live: "https://blog-admin-three-blue.vercel.app/",
   },
 ];
 
