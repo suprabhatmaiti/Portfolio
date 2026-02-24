@@ -77,7 +77,7 @@ export default function Hero() {
 
           {/* Resume Button */}
           <motion.a
-            href="https://drive.google.com/file/d/1OJWCpRilgLbhdhU1bxYXE0NVvO2p4QkB/view?usp=sharing"
+            href="https://drive.google.com/file/d/11u50jqk_IPXsRT4CUu3A91caZfcuxuRC/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             variants={{
