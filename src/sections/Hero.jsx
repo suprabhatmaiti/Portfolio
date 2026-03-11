@@ -27,9 +27,10 @@ export default function Hero() {
     <section
       id="home"
       data-cursor="inverse"
-      className="w-full min-h-screen 
+      className="w-full min-h-screen lg:min-h-auto
       flex items-center justify-center
-      bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300"
+      bg-gradient-to-b from-blue-200 via-indigo-300 to-blue-300
+      pt-20 md:pt-10 lg:pt-30 lg:pb-12"
     >
       <div
         className="max-w-7xl mx-auto w-full
